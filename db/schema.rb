@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_08_185005) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_08_225053) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,9 +35,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_08_185005) do
     t.string "img_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "dealerships_id"
-    t.index ["dealerships_id"], name: "index_vehicles_on_dealerships_id"
+    t.bigint "dealership_id"
+    t.index ["dealership_id"], name: "index_vehicles_on_dealership_id"
   end
 
-  add_foreign_key "vehicles", "dealerships", column: "dealerships_id"
+  add_foreign_key "vehicles", "dealerships"
 end

@@ -1,24 +1,9 @@
-# README
+dealership index
+- add filter by location
+- add filter by rating
+- button to view that dealership inventory
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+vehicle index
+- add filters for car attributes
+- sort by price feature
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
