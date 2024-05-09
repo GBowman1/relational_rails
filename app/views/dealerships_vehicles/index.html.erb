@@ -1,16 +1,22 @@
-<h1> All Vehicles </h1>
-<% @vehicles.each do |vehicle| %>
-    <div class="card" style="width: 18rem;">
-        <img src= <%"#{vehicle.img_url}" %> class="card-img-top" alt="Coming Soon">
-        <div class="card-body">
-            <h5 class="card-title"> <%="#{vehicle.make} #{vehicle.model}" %> </h5>
-            <p class="card-text"> <%="Vehicle Year: #{vehicle.year}" %> </p>
-        </div> 
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item"> <%="Pre-Owned: #{vehicle.pre_owned}" %> </li>
-            <li class="list-group-item"> <%="Electric: #{vehicle.electric}" %> </li>
-            <li class="list-group-item"> <%="Horsepower: #{vehicle.horsepower}" %> </li>
-            <li class="list-group-item"> <%="Price: #{vehicle.price}$" %> </li>
-        </ul>
+<section class="container">
+    <h1> <%= "All Vehicles from: #{@vehicles.first.dealership.name}" %> </h1>
+    <div class="row">
+        <% @vehicles.each do |vehicle| %>
+            <div class="col-4 mb-4">
+                <div class="card">
+                    <img src="<%=vehicle.img_url%>" class="card-img-top" alt="Coming Soon" style="width: 10rem">
+                    <div class="card-body">
+                        <h3 class="card-title"> <%="#{vehicle.make} #{vehicle.model}" %> </h3>
+                        <p class="card-text"> <%="Vehicle Year: #{vehicle.year}" %> </p>
+                    </div> 
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"> <%="Pre-Owned: #{vehicle.pre_owned}" %> </li>
+                        <li class="list-group-item"> <%="Electric: #{vehicle.electric}" %> </li>
+                        <li class="list-group-item"> <%="Horsepower: #{vehicle.horsepower}" %> </li>
+                        <li class="list-group-item"> <%="Price: #{vehicle.price}$" %> </li>
+                    </ul>
+                </div>
+            </div>
+        <% end %>
     </div>
-<% end %>
+</section>
