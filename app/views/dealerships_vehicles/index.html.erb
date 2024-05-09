@@ -4,8 +4,8 @@
         <% @vehicles.each do |vehicle| %>
             <div class="col-4 mb-4">
                 <div class="card">
-                    <img src="<%=vehicle.img_url%>" class="card-img-top" alt="Coming Soon" style="width: 10rem">
-                    <div class="card-body">
+                    <img src="<%=vehicle.img_url%>" class="card-img-top mx-auto" alt="Coming Soon" style="width: 80%">
+                    <div class="card-body mx-auto">
                         <h3 class="card-title"> <%="#{vehicle.make} #{vehicle.model}" %> </h3>
                         <p class="card-text"> <%="Vehicle Year: #{vehicle.year}" %> </p>
                     </div> 

@@ -1,16 +1,25 @@
-<h1> All Vehicles </h1>
-<% @vehicles.each do |vehicle| %>
-    <div class="card" style="width: 18rem;">
-        <img src= <%"#{vehicle.img_url}" %> class="card-img-top" alt="Coming Soon">
-        <div class="card-body">
-            <h5 class="card-title"> <%="#{vehicle.make} #{vehicle.model}" %> </h5>
-            <p class="card-text"> <%="Vehicle Year: #{vehicle.year}" %> </p>
-        </div> 
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item"> <%="Pre-Owned: #{vehicle.pre_owned}" %> </li>
-            <li class="list-group-item"> <%="Electric: #{vehicle.electric}" %> </li>
-            <li class="list-group-item"> <%="Horsepower: #{vehicle.horsepower}" %> </li>
-            <li class="list-group-item"> <%="Price: #{vehicle.price}$" %> </li>
-        </ul>
+<section class="container">
+    <h1 class="mb-1">All Vehicles </h1>
+    <div class="row">
+        <% @vehicles.each do |vehicle| %>
+            <div class="col-4 mb-4">
+                <div class="card">
+                    <div style="height: 16rem; overflow: hidden;">
+                        <img src="<%=vehicle.img_url%>" class="card-img-top mx-auto my-auto" alt="Coming Soon" style="width: 100%; height: auto; object-fit: cover;">
+                    </div>
+                    <div class="card-body mx-auto">
+                        <h3 class="card-title"> <%="#{vehicle.make} #{vehicle.model}" %> </h3>
+                        <p class="card-text"> <%="Vehicle Year: #{vehicle.year}" %> </p>
+                    </div> 
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"> <%="Pre-Owned: #{vehicle.pre_owned}" %> </li>
+                        <li class="list-group-item"> <%="Electric: #{vehicle.electric}" %> </li>
+                        <li class="list-group-item"> <%="Horsepower: #{vehicle.horsepower}" %> </li>
+                        <li class="list-group-item"> <%="Price: #{vehicle.price}$" %> </li>
+                        <li class="list-group-item"> <%="Seller: #{vehicle.dealership.name}"%> </li>
+                    </ul>
+                </div>
+            </div>
+        <% end %>
     </div>
-<% end %>
+</section>

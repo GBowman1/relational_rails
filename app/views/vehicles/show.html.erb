@@ -1,9 +1,16 @@
-<div class="mx-auto">
-    <img src=<%"#{@vehicle.img_url}" %>>
-    <h1> <%= "#{@vehicle.make} #{ @vehicle.model}" %> </h1>
-    <p> <%="Vehicle Year: #{@vehicle.year} "%> </p>
-    <p> <%="Pre-Owned: #{@vehicle.pre_owned} "%> </p>
-    <p> <%="Electric: #{@vehicle.electric} "%> </p>
-    <p> <%="Horsepower: #{@vehicle.horsepower} "%> </p>
-    <p> <%="Price: #{@vehicle.price}$ "%> </p>
+<div class="container">
+    <div class="mx-auto">
+        <img src="<%=@vehicle.img_url%>">
+        <h1> <%= "#{@vehicle.make} #{ @vehicle.model}" %> </h1>
+        <p> <%="Vehicle Year: #{@vehicle.year} "%> </p>
+        <p> <%="Pre-Owned: #{@vehicle.pre_owned} "%> </p>
+        <p> <%="Electric: #{@vehicle.electric} "%> </p>
+        <p> <%="Horsepower: #{@vehicle.horsepower} "%> </p>
+        <p> <%="Price: #{@vehicle.price}$ "%> </p>
+        <p>
+            <a href="/dealerships/<%=@vehicle.dealership.id%>">
+                <%="Seller: #{ @vehicle.dealership.name}"%>
+            </a>
+        </p>
+    </div>
 </div>
