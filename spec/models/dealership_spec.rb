@@ -12,6 +12,7 @@ describe Dealership do
     # And next to each of the records I see when it was created
     describe 'class methods' do
         it "can sort dealerships by most recently created" do
+            
         end
         it 'shoes when the dealership was created' do
         end
