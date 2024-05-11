@@ -22,7 +22,7 @@ describe "Dealerships Index" do
             visit '/dealerships'
 
             expect(page).to have_content(dealer_1.name)
-            expect(page).to have_content("location: #{dealer_1.city}")
+            expect(page).to have_content("Location: #{dealer_1.city}")
         end
 
         # User Story 6, Parent Index sorted by Most Recently Created 
