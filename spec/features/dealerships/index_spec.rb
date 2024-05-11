@@ -82,7 +82,7 @@ describe "Dealerships Index" do
 
             visit '/dealerships'
 
-            expect(page).to have_content("Dealerships Shown: #{Dealership.all.count}")
+            expect(page).to have_content("Showing #{Dealership.all.count} Dealerships")
         end
     end
 end

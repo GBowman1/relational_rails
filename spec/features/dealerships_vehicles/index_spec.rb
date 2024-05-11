@@ -146,7 +146,7 @@ describe "Dealerships Vehicles Index" do
 
             visit "/dealerships/#{dealer_1.id}/vehicles"
 
-            expect(page).to have_content("Showing #{dealer_1.vehicles.count} listings", wait: 10)
+            expect(page).to have_content("Showing #{dealer_1.vehicles.count} Vehicles")
         end
     end
 end
