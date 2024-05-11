@@ -1,7 +1,28 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <h3>VMDB</h3>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dealerships">All Dealerships</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/vehicles">All Vehicles</a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+            Vehicle Market DB
+            </span>
+        </div>
+    </div>
+</nav>
 <section class="container">
-    <h1> <%= "All Vehicles from: #{@vehicles.first.dealership.name}" %> </h1>
+    <h1> <%= "All Vehicles from: #{@dealership.name}" %> </h1>
     <div class="row">
-        <% @vehicles.each do |vehicle| %>
+        <% @dealership.vehicles.each do |vehicle| %>
             <div class="col-4 mb-4">
                 <div class="card">
                     <img src="<%=vehicle.img_url%>" class="card-img-top mx-auto" alt="Coming Soon" style="width: 80%">
@@ -18,5 +39,10 @@
                 </div>
             </div>
         <% end %>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <p> Showing <%= @dealership.vehicles.count %> listings </p>
+        </div>
     </div>
 </section>
