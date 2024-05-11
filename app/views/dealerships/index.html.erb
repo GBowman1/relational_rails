@@ -27,13 +27,17 @@
         <div class="col-12">
             <h1>All Dealerships</h1>
             <% @dealerships.each do |dealership| %>
-                <h3><%= dealership.name %></h3>
+                <h3 class="mt-1"><%= dealership.name %></h3>
                 <p>Location: <%= dealership.city %></p>
                 <p>Dealership added on: <%= dealership.created_at.strftime('%a, %b %d %Y') %></p>
+                <a href="dealerships/<%= dealership.id%>/vehicles">View <%=dealership.name %> Inventory</a>
+                <br>
+                <a href="dealerships/<%= dealership.id%>">View <%=dealership.name %> Info</a>
+                <%# later change to be buttons side by side for better appearance %>
             <% end %>
         </div>
     </div>
-    <div class="row justify-content-center"> <!-- Centering row -->
+    <div class="row justify-content-center">
         <div class="col-auto">
             <p>Showing <%= @dealerships.count %> Dealerships</p>
         </div>

@@ -84,5 +84,74 @@ describe "Dealerships Index" do
 
             expect(page).to have_content("Showing #{Dealership.all.count} Dealerships")
         end
+        # User Story 8, Child Index Link
+
+        # As a visitor
+        # When I visit any page on the site
+        # Then I see a link at the top of the page that takes me to the Child Index
+        it 'has a link to the dealerships vehicles index' do
+            dealer_1 = Dealership.create!(
+                                        review_rating: 4,
+                                        days_open: "Monday - Friday",
+                                        city: "City 1",
+                                        name: "Dealer 1", 
+                                        military_discount: true,
+                                        created_at: Time.now,  
+                                        updated_at: Time.now
+            )
+            dealer_2 = Dealership.create!(
+                                        review_rating: 5,
+                                        days_open: "Monday - Saturday",
+                                        city: "City 2",
+                                        name: "Dealer 2",
+                                        military_discount: false,
+                                        created_at: Time.now,
+                                        updated_at: Time.now
+            )
+
+            visit '/dealerships'
+
+            expect(page).to have_link("View #{dealer_1.name} Inventory")
+            expect(page).to have_link("View #{dealer_2.name} Inventory")
+
+            click_link("View #{dealer_1.name} Inventory")
+            expect(current_path).to eq("/dealerships/#{dealer_1.id}/vehicles")
+
+            visit '/dealerships'
+            click_link("View #{dealer_2.name} Inventory")
+            expect(current_path).to eq("/dealerships/#{dealer_2.id}/vehicles")
+        end
+        it 'has a link to the dealerships show' do
+            dealer_1 = Dealership.create!(
+                                        review_rating: 4,
+                                        days_open: "Monday - Friday",
+                                        city: "City 1",
+                                        name: "Dealer 1", 
+                                        military_discount: true,
+                                        created_at: Time.now,  
+                                        updated_at: Time.now
+            )
+            dealer_2 = Dealership.create!(
+                                        review_rating: 5,
+                                        days_open: "Monday - Saturday",
+                                        city: "City 2",
+                                        name: "Dealer 2",
+                                        military_discount: false,
+                                        created_at: Time.now,
+                                        updated_at: Time.now
+            )
+
+            visit '/dealerships'
+
+            expect(page).to have_link("View #{dealer_1.name} Info")
+            expect(page).to have_link("View #{dealer_2.name} Info")
+
+            click_link("View #{dealer_1.name} Info")
+            expect(current_path).to eq("/dealerships/#{dealer_1.id}")
+
+            visit '/dealerships'
+            click_link("View #{dealer_2.name} Info")
+            expect(current_path).to eq("/dealerships/#{dealer_2.id}")
+        end
     end
 end
