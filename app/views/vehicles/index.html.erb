@@ -1,16 +1,52 @@
-<h1> All Vehicles </h1>
-<% @vehicles.each do |vehicle| %>
-    <div class="card" style="width: 18rem;">
-        <img src= <%"#{vehicle.img_url}" %> class="card-img-top" alt="Coming Soon">
-        <div class="card-body">
-            <h5 class="card-title"> <%="#{vehicle.make} #{vehicle.model}" %> </h5>
-            <p class="card-text"> <%="Vehicle Year: #{vehicle.year}" %> </p>
-        </div> 
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item"> <%="Pre-Owned: #{vehicle.pre_owned}" %> </li>
-            <li class="list-group-item"> <%="Electric: #{vehicle.electric}" %> </li>
-            <li class="list-group-item"> <%="Horsepower: #{vehicle.horsepower}" %> </li>
-            <li class="list-group-item"> <%="Price: #{vehicle.price}$" %> </li>
-        </ul>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <h3>VMDB</h3>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dealerships">All Dealerships</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/vehicles">All Vehicles</a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+            Vehicle Market DB
+            </span>
+        </div>
     </div>
-<% end %>
+</nav>
+<section class="container">
+    <h1 class="mb-1">All Vehicles </h1>
+    <div class="row">
+        <% @vehicles.each do |vehicle| %>
+            <div class="col-4 mb-4">
+                <div class="card">
+                    <div style="height: 16rem; overflow: hidden;">
+                        <img src="<%=vehicle.img_url%>" class="card-img-top mx-auto my-auto" alt="Coming Soon" style="width: 100%; height: auto; object-fit: cover;">
+                    </div>
+                    <div class="card-body mx-auto">
+                        <h3 class="card-title"> <%="#{vehicle.make} #{vehicle.model}" %> </h3>
+                        <p class="card-text"> <%="Vehicle Year: #{vehicle.year}" %> </p>
+                    </div> 
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"> <%="Pre-Owned: #{vehicle.pre_owned}" %> </li>
+                        <li class="list-group-item"> <%="Electric: #{vehicle.electric}" %> </li>
+                        <li class="list-group-item"> <%="Horsepower: #{vehicle.horsepower}" %> </li>
+                        <li class="list-group-item"> <%="Price: #{vehicle.price}$" %> </li>
+                        <li class="list-group-item"> <%="Seller: #{vehicle.dealership.name}"%> </li>
+                        <li class="list-group-item"> <a href="/vehicles/<%=vehicle.id%>">View <%=vehicle.model %> Details</a></li>
+                    </ul>
+                </div>
+            </div>
+        <% end %>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <p> Showing <%= @vehicles.count %> Vehicles </p>
+        </div>
+    </div>
+</section>

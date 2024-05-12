@@ -45,7 +45,8 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # custom styling gem
-gem 'bootstrap', '~> 4.4.1'
+gem 'sassc-rails'
+gem 'bootstrap', '~> 5.1.1'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
