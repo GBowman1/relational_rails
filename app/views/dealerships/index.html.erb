@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-dark border-bottom border-body text-light mb-2" data-bs-theme="dark">
     <div class="container-fluid">
         <h3>VMDB</h3>
         <div class="collapse navbar-collapse" id="navbarText">
@@ -26,15 +26,20 @@
     <div class="row">
         <div class="col-12">
             <h1>All Dealerships</h1>
-            <p><a href="dealerships/new">Add New Dealership</a></p>
+            <hr>
+            <p><a href="dealerships/new" class="btn btn-primary">Add New Dealership</a></p>
             <% @dealerships.each do |dealership| %>
-                <h3 class="mt-1"><%= dealership.name %></h3>
-                <p>Location: <%= dealership.city %></p>
-                <p>Dealership added on: <%= dealership.created_at.strftime('%a, %b %d %Y') %></p>
-                <a href="dealerships/<%= dealership.id%>/vehicles">View <%=dealership.name %> Inventory</a>
-                <br>
-                <a href="dealerships/<%= dealership.id%>">View <%=dealership.name %> Info</a>
-                <%# later change to be buttons side by side for better appearance %>
+                <div class="card bg-light-subtle text-light-emphasis my-1">
+                    <h3 class="mt-1"><%= dealership.name %></h3>
+                    <p>Location: <%= dealership.city %></p>
+                    <p>Dealership added on: <%= dealership.created_at.strftime('%a, %b %d %Y') %></p>
+                    <div class="btn-group">
+                        <a href="dealerships/<%= dealership.id%>/vehicles" class="btn btn-primary m-1">View <%=dealership.name %> Inventory</a>
+                        <a href="dealerships/<%= dealership.id%>" class="btn btn-primary m-1">View <%=dealership.name %> Info</a>
+                        <a href="dealerships/<%= dealership.id%>/edit" class="btn btn-warning m-1">Update <%=dealership.name%></a>
+                        <%# later change to be buttons side by side for better appearance %>
+                    </div>
+                </div>
             <% end %>
         </div>
     </div>
