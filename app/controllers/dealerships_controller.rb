@@ -41,4 +41,10 @@ class DealershipsController < ApplicationController
         redirect_to "/dealerships"
         # refactor for strong params
     end
+
+    def destroy
+        @dealership = Dealership.find(params[:id])
+        @dealership.destroy
+        redirect_to "/dealerships"
+    end
 end

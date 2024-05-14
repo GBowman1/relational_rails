@@ -22,9 +22,18 @@
 <section class="container">
     <h1> <%= "All Vehicles from: #{@dealership.name}" %> </h1>
     <hr>
-    <p><a href="/dealerships/<%=@dealership.id%>/vehicles/new" class="btn btn-primary">Add New Vehicle</a></p>
+    <a href="/dealerships/<%=@dealership.id%>/vehicles/new" class="btn btn-primary">Add New Vehicle</a>
+
+    <%= link_to dealership_vehicles_path(@dealership, sort: 'make'), class: "btn btn-primary m-1" do %>
+        Make A-Z
+    <% end %>
+
+    <%= link_to dealership_vehicles_path(@dealership, sort: 'model'), class: "btn btn-primary m-1" do %>
+        Model A-Z
+    <% end %>
+
     <div class="row">
-        <% @dealership.vehicles.each do |vehicle| %>
+        <% @vehicles.each do |vehicle| %>
             <div class="col-4 mb-4">
                 <div class="card">
                     <img src="<%=vehicle.img_url%>" class="card-img-top mx-auto" alt="Coming Soon" style="width: 80%">

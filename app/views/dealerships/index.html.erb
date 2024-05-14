@@ -37,6 +37,10 @@
                         <a href="dealerships/<%= dealership.id%>/vehicles" class="btn btn-primary m-1">View <%=dealership.name %> Inventory</a>
                         <a href="dealerships/<%= dealership.id%>" class="btn btn-primary m-1">View <%=dealership.name %> Info</a>
                         <a href="dealerships/<%= dealership.id%>/edit" class="btn btn-warning m-1">Update <%=dealership.name%></a>
+                        <%= form_tag("/dealerships/#{dealership.id}", method: :delete) do %>
+                            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                            <%= submit_tag "Delete", class: "btn btn-danger m-1" %>
+                        <% end %>
                         <%# later change to be buttons side by side for better appearance %>
                     </div>
                 </div>

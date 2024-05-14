@@ -26,6 +26,7 @@
     <p>days open: <%= @dealership.days_open %></p>
     <p>provides military discount: <%= @dealership.military_discount %></p>
     <div class="btn-group">
-        <a href="<%= @dealership.id%>/vehicles" class="btn btn-primary">View <%=@dealership.name %> Inventory</a>
+        <a href="<%= @dealership.id%>/vehicles" class="btn btn-primary m-1">View <%=@dealership.name %> Inventory</a>
+        <a href="/dealerships/<%= @dealership.id%>/edit" class="btn btn-warning m-1">Update <%=@dealership.name%></a>
     </div>
 </div>

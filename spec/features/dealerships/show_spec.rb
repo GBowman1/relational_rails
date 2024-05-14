@@ -75,5 +75,21 @@ describe "Dealerships Show" do
             click_link("View #{dealer_2.name} Inventory")
             expect(current_path).to eq("/dealerships/#{dealer_2.id}/vehicles")
         end
+        it 'has a link to edit dealership' do
+            dealer_1 = Dealership.create!(
+                                        review_rating: 4,
+                                        days_open: "Monday - Friday",
+                                        city: "City 1",
+                                        name: "Dealer 1", 
+                                        military_discount: true,
+                                        created_at: Time.now,  
+                                        updated_at: Time.now
+            )
+            visit "/dealerships/#{dealer_1.id}"
+
+            expect(page).to have_link("Update #{dealer_1.name}")
+            click_link("Update #{dealer_1.name}")
+            expect(current_path).to eq("/dealerships/#{dealer_1.id}/edit")
+        end
     end
 end

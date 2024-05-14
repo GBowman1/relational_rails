@@ -22,6 +22,8 @@
 <div class="container">
     <%= form_with(model: @vehicle, url: "/vehicles/#{@vehicle.id}", method: "patch", local: true, data: { turbo: false }) do |form| %>
     <%= form.hidden_field :authenticity_token, value: form_authenticity_token %>
+    <%= form.hidden_field :electric, value: 0 %>
+    <%= form.hidden_field :pre_owned, value: 0 %>
         <div class="row g-3">
             <div class="col-md-6">
                 <label for="price" class="form-label">Vehicle Price</label>
