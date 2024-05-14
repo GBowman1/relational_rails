@@ -1,6 +1,12 @@
 class VehiclesController < ApplicationController
     def index
-        @vehicles = Vehicle.all
+        if params[:filter] == "pre_owned"
+            @vehicles = Vehicle.pre_owned
+        elsif params[:filter] == "electric"
+            @vehicles = Vehicle.electric
+        else
+            @vehicles = Vehicle.all
+        end
     end
 
     def show

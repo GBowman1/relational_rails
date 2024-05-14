@@ -47,6 +47,9 @@ gem "bootsnap", require: false
 # custom styling gem
 gem 'sassc-rails'
 gem 'bootstrap', '~> 5.1.1'
+gem 'bootstrap-icons'
+gem 'bootstrap-icons-helper'
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
