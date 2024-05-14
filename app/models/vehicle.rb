@@ -8,4 +8,8 @@ class Vehicle < ApplicationRecord
     def self.electric
         where(electric: true)
     end
+
+    def self.min_year(year)
+        where("year > #{year}")
+    end
 end

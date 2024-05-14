@@ -8,6 +8,10 @@ class DealershipsVehiclesController < ApplicationController
         elsif params[:sort] == "model"
             @vehicles = @dealership.alphabetical_order_model
         end
+
+        if params[:min_year_search].present?
+            @vehicles = @vehicles.min_year(params[:min_year_search])
+        end
     end
 
     def new
@@ -20,18 +24,6 @@ class DealershipsVehiclesController < ApplicationController
         @vehicle = @dealership.vehicles.create(vehicle_params)
         redirect_to dealership_vehicles_path(@dealership)
     end
-
-    # def edit
-    #     @dealership = Dealership.find(params[:dealership_id])
-    #     @vehicle = Vehicle.find(params[:id])
-    # end
-
-    # def update
-    #     @dealership = Dealership.find(params[:dealership_id])
-    #     @vehicle = Vehicle.find(params[:id])
-    #     @vehicle.update(vehicle_params)
-    #     redirect_to dealership_vehicles_path(@dealership)
-    # end
 
     private
     def vehicle_params

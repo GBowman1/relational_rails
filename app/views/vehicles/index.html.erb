@@ -56,7 +56,11 @@
                         <li class="list-group-item btn-group"> 
                             <a href="/vehicles/<%=vehicle.id%>" class="btn btn-primary">View <%=vehicle.model %> Details</a>
                             <a href="/vehicles/<%=vehicle.id%>/edit" class="btn btn-warning m-1">Edit <%=vehicle.make%> <%=vehicle.model%></a>
-                            </li>
+                            <%= form_tag("/vehicles/#{vehicle.id}", method: :delete) do %>
+                                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                                <%= submit_tag "Delete Vehicle", class: "btn btn-danger m-1" %>
+                            <% end %>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -148,19 +148,14 @@ describe "Dealerships Vehicles Index" do
 
             expect(page).to have_content("Showing #{dealer_1.vehicles.count} Vehicles")
         end
-        # User Story 13, Parent Child Creation 
+        # User Story 21, Display Records Over a Given Threshold 
 
         # As a visitor
-        # When I visit a Parent Children Index page
-        # Then I see a link to add a new adoptable child for that parent "Create Child"
-        # When I click the link
-        # I am taken to '/parents/:parent_id/child_table_name/new' where I see a form to add a new adoptable child
-        # When I fill in the form with the child's attributes:
-        # And I click the button "Create Child"
-        # Then a `POST` request is sent to '/parents/:parent_id/child_table_name',
-        # a new child object/row is created for that parent,
-        # and I am redirected to the Parent Childs Index page where I can see the new child listed
-        it 'has a link to add a new vehicle' do
+        # When I visit the Parent's children Index Page
+        # I see a form that allows me to input a number value
+        # When I input a number value and click the submit button that reads 'Only return records with more than `number` of `column_name`'
+        # Then I am brought back to the current index page with only the records that meet that threshold shown.
+        it 'can filter vehicles by minimum year' do
             dealer_1 = Dealership.create!(
                                         review_rating: 4,
                                         days_open: "Monday - Friday",
@@ -216,9 +211,10 @@ describe "Dealerships Vehicles Index" do
 
             visit "/dealerships/#{dealer_1.id}/vehicles"
 
-            expect(page).to have_link("Add New Vehicle")
-            click_link("Add New Vehicle")
-            expect(current_path).to eq("/dealerships/#{dealer_1.id}/vehicles")
+            expect(page).to have_field("min_year_search")
+            fill_in "min_year_search", with: 2013
+            click_button "Apply Filter"
+            expect(page).to have_content(vehicle_2.make)
         end
     end
 end
