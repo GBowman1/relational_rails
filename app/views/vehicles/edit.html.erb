@@ -20,49 +20,50 @@
     </div>
 </nav>
 <div class="container">
-    <form action="/vehicles/<%=@vehicle.id%>" method="post" class="row g-3">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input type="hidden" name="_method" value="PATCH" />
-        <div class="col-md-6">
-            <label for="price" class="form-label">Vehicle Price</label>
-            <input type="number" class="form-control" id="price" name="price" placeholder="<%=@vehicle.price%>">
-        </div>
-        <div class="col-6">
-            <label for="year" class="form-label">Vehicle Year</label>
-            <input type="number" class="form-control" id="year" placeholder="<%=@vehicle.year%>" name="year">
-        </div>
-        <div class="col-md-6">
-            <label for="horsepower" class="form-label">Horsepower</label>
-            <input type="number" class="form-control" id="horsepower" name="horsepower" placeholder="<%=@vehicle.horsepower%>">
-        </div>
-        <div class="col-md-6">
-            <label for="make" class="form-label">Vehicle Make</label>
-            <input type="text" class="form-control" id="make" placeholder="<%=@vehicle.make%>" name="make">
-        </div>
-        <div class="col-md-6">
-            <label for="model" class="form-label">Vehicle Model</label>
-            <input type="text" class="form-control" id="model" placeholder="<%=@vehicle.model%>" name="model">
-        </div>
-        <div class="col-md-6">
-            <label for="img_url" class="form-label">Link to Vehicle Image</label>
-            <input type="text" class="form-control" id="img_url" name="img_url" value="<%=@vehicle.img_url%>">
-        </div>
-        <div class="col-3">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="pre_owned" name="pre_owned" value="true">
+    <%= form_with(model: @vehicle, url: "/vehicles/#{@vehicle.id}", method: "patch", local: true, data: { turbo: false }) do |form| %>
+    <%= form.hidden_field :authenticity_token, value: form_authenticity_token %>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="price" class="form-label">Vehicle Price</label>
+                <%= form.text_field :price, class: "form-control", id: "price" %>
+            </div>
+            <div class="col-6">
+                <label for="year" class="form-label">Vehicle Year</label>
+                <%= form.text_field :year, class: "form-control", id: "year" %>
+            </div>
+            <div class="col-md-6">
+                <label for="horsepower" class="form-label">Horsepower</label>
+                <%= form.text_field :horsepower, class: "form-control", id: "horsepower" %>
+            </div>
+            <div class="col-md-6">
+                <label for="make" class="form-label">Vehicle Make</label>
+                <%= form.text_field :make, class: "form-control", id: "make" %>
+            </div>
+            <div class="col-md-6">
+                <label for="model" class="form-label">Vehicle Model</label>
+                <%= form.text_field :model, class: "form-control", id: "model" %>
+            </div>
+            <div class="col-md-6">
+                <label for="img_url" class="form-label">Link to Vehicle Image</label>
+                <%= form.text_field :img_url, class: "form-control", id: "img_url" %>
+            </div>
+            <div class="col-3">
+                <div class="form-check">
+                <%= form.check_box :pre_owned, class: "form-check-input", id: "pre_owned" %>
                 <label class="form-check-label" for="pre_owned">
-                Check if vehicle is Pre-Owned
+                    Check if vehicle is Pre-Owned
                 </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="electric" name="electric" value="true">
+                </div>
+                <div class="form-check">
+                <%= form.check_box :electric, class: "form-check-input", id: "electric" %>
                 <label class="form-check-label" for="electric">
-                Check if vehicle is electric
+                    Check if vehicle is electric
                 </label>
+                </div>
+            </div>
+            <div class="col-12">
+                <%= form.submit "Update Vehicle", class: "btn btn-primary" %>
             </div>
         </div>
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary">Update Vehicle</button>
-        </div>
-    </form>
+    <% end %>
 </div>

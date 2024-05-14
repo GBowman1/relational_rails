@@ -25,5 +25,7 @@
     <p>rating: <%= @dealership.review_rating %></p>
     <p>days open: <%= @dealership.days_open %></p>
     <p>provides military discount: <%= @dealership.military_discount %></p>
-    <a href="<%= @dealership.id%>/vehicles">View <%=@dealership.name %> Inventory</a>
+    <div class="btn-group">
+        <a href="<%= @dealership.id%>/vehicles" class="btn btn-primary">View <%=@dealership.name %> Inventory</a>
+    </div>
 </div>
