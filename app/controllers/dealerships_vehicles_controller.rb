@@ -4,4 +4,20 @@ class DealershipsVehiclesController < ApplicationController
         @dealership = Dealership.find(params[:dealership_id])
     end
 
+    def new
+        @dealership = Dealership.find(params[:dealership_id])
+        @vehicle = Vehicle.new
+    end
+
+    def create
+        @dealership = Dealership.find(params[:dealership_id])
+        @vehicle = @dealership.vehicles.create(vehicle_params)
+        redirect_to dealership_vehicles_path(@dealership)
+    end
+
+    private
+    def vehicle_params
+        params.require(:vehicle).permit(:pre_owned, :electric, :price, :year, :horsepower, :make, :model, :img_url)
+    end
+
 end

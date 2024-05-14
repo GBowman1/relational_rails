@@ -15,9 +15,13 @@ Rails.application.routes.draw do
   get '/dealerships/:id', to: 'dealerships#show'
   get '/dealerships/:id/edit', to: 'dealerships#edit'
   patch '/dealerships/:id', to: 'dealerships#update'
+
 # Child Routes
   get '/vehicles', to: 'vehicles#index'
   get '/vehicles/:id', to: 'vehicles#show'
+  
 # Nested Routes
   get '/dealerships/:dealership_id/vehicles', to: 'dealerships_vehicles#index'
+  get '/dealerships/:dealership_id/vehicles/new', to: 'dealerships_vehicles#new'
+  post '/dealerships/:dealership_id/vehicles', to: 'dealerships_vehicles#create'
 end

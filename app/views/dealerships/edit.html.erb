@@ -20,7 +20,7 @@
     </div>
 </nav>
 <div class="container">
-    <form action="/dealerships" method="post" class="row g-3">
+    <form action="/dealerships/<%=@dealership.id%>" method="patch" class="row g-3">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
         <div class="col-md-6">
             <label for="dealershipName" class="form-label">Dealership Name</label>

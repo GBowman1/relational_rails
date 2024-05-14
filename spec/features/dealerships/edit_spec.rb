@@ -15,7 +15,7 @@ describe "Dealerships Edit" do
         # the parent's info is updated,
         # and I am redirected to the Parent's Show page where I see the parent's updated info
             it 'can update a dealership' do
-                        dealer_1 = Dealership.create!(
+            dealer_1 = Dealership.create!(
                                         review_rating: 4,
                                         days_open: "Monday - Friday",
                                         city: "City 1",
