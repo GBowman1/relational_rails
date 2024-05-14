@@ -11,3 +11,4 @@ This application is a concept of a vehicle market database, The end goal would t
 
 The Database Schema:
 
+<img width="782" alt="db_schema" src="https://github.com/GBowman1/relational_rails/assets/74687494/f924719b-6001-4273-ac11-98e43ca8ba80">
