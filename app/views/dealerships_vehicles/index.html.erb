@@ -22,15 +22,33 @@
 <section class="container">
     <h1> <%= "All Vehicles from: #{@dealership.name}" %> </h1>
     <hr>
-    <a href="/dealerships/<%=@dealership.id%>/vehicles/new" class="btn btn-primary">Add New Vehicle</a>
+    <div class="row">
+        <div class="col-6">
+            <a href="/dealerships/<%=@dealership.id%>/vehicles/new" class="btn btn-primary">Add New Vehicle</a>
 
-    <%= link_to dealership_vehicles_path(@dealership, sort: 'make'), class: "btn btn-primary m-1" do %>
-        Make A-Z
-    <% end %>
+            <%= link_to dealership_vehicles_path(@dealership, sort: 'make'), class: "btn btn-primary m-1" do %>
+                Make A-Z
+            <% end %>
 
-    <%= link_to dealership_vehicles_path(@dealership, sort: 'model'), class: "btn btn-primary m-1" do %>
-        Model A-Z
-    <% end %>
+            <%= link_to dealership_vehicles_path(@dealership, sort: 'model'), class: "btn btn-primary m-1" do %>
+                Model A-Z
+            <% end %>
+        </div>
+        <div class="col-6">
+            <%= form_tag(dealership_vehicles_path(@dealership), method: :get) do %>
+                <div class ="row">
+                    <div class="form-group m-1 col-3">
+                        <% label_tag "min_year_search"%>
+                    </div>
+                    <div class="input-group mb-1 col-3">
+                        <div class="col-6">
+                            <%= number_field_tag "min_year_search", params[:min_year_search], class: "form-control", placeholder: "Enter minimum year" %>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Apply Filter</button>
+                    </div>
+            <% end %>
+        </div>
+    </div>
 
     <div class="row">
         <% @vehicles.each do |vehicle| %>

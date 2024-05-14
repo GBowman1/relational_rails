@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get '/vehicles/:id', to: 'vehicles#show'
   get '/vehicles/:id/edit', to: 'vehicles#edit'
   patch '/vehicles/:id', to: 'vehicles#update'
+  delete '/vehicles/:id', to: 'vehicles#destroy'
   
   # Nested Routes
     get '/dealerships/:dealership_id/vehicles', to: 'dealerships_vehicles#index', as: 'dealership_vehicles'

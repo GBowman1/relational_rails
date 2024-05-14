@@ -91,5 +91,22 @@ describe "Dealerships Show" do
             click_link("Update #{dealer_1.name}")
             expect(current_path).to eq("/dealerships/#{dealer_1.id}/edit")
         end
+        it 'has a button to delete dealership' do
+            dealer_1 = Dealership.create!(
+                                        review_rating: 4,
+                                        days_open: "Monday - Friday",
+                                        city: "City 1",
+                                        name: "Dealer 1", 
+                                        military_discount: true,
+                                        created_at: Time.now,  
+                                        updated_at: Time.now
+            )
+            visit "/dealerships/#{dealer_1.id}"
+
+            expect(page).to have_button("Delete")
+            click_button("Delete")
+            expect(current_path).to eq("/dealerships")
+            expect(page).to_not have_content(dealer_1.name)
+        end
     end
 end
