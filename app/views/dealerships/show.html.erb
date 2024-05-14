@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-dark border-bottom border-body text-light mb-2" data-bs-theme="dark">
     <div class="container-fluid">
         <h3>VMDB</h3>
         <div class="collapse navbar-collapse" id="navbarText">
@@ -25,5 +25,8 @@
     <p>rating: <%= @dealership.review_rating %></p>
     <p>days open: <%= @dealership.days_open %></p>
     <p>provides military discount: <%= @dealership.military_discount %></p>
-    <a href="<%= @dealership.id%>/vehicles">View <%=@dealership.name %> Inventory</a>
+    <div class="btn-group">
+        <a href="<%= @dealership.id%>/vehicles" class="btn btn-primary m-1">View <%=@dealership.name %> Inventory</a>
+        <a href="/dealerships/<%= @dealership.id%>/edit" class="btn btn-warning m-1">Update <%=@dealership.name%></a>
+    </div>
 </div>

@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg bg-dark border-bottom border-body text-light mb-2" data-bs-theme="dark">
+    <div class="container-fluid">
+        <h3>VMDB</h3>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dealerships">All Dealerships</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/vehicles">All Vehicles</a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+            Vehicle Market DB
+            </span>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <form action="/dealerships/<%=@dealership.id%>/vehicles" method="post" class="row g-3">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="electric" value="0">
+        <input type="hidden" name="pre_owned" value="0">
+        <div class="col-md-6">
+            <label for="price" class="form-label">Vehicle Price</label>
+            <input type="number" class="form-control" id="price" name="price" placeholder="ex 19500">
+        </div>
+        <div class="col-6">
+            <label for="year" class="form-label">Vehicle Year</label>
+            <input type="number" class="form-control" id="year" placeholder="ex 2005" name="year">
+        </div>
+        <div class="col-md-6">
+            <label for="horsepower" class="form-label">Horsepower</label>
+            <input type="number" class="form-control" id="horsepower" name="horsepower">
+        </div>
+        <div class="col-md-6">
+            <label for="make" class="form-label">Vehicle Make</label>
+            <input type="text" class="form-control" id="make" placeholder="Toyota" name="make">
+        </div>
+        <div class="col-md-6">
+            <label for="model" class="form-label">Vehicle Model</label>
+            <input type="text" class="form-control" id="model" placeholder="Tacoma" name="model">
+        </div>
+        <div class="col-md-6">
+            <label for="img_url" class="form-label">Link to Vehicle Image</label>
+            <input type="text" class="form-control" id="img_url" name="img_url">
+        </div>
+        <div class="col-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="pre_owned" name="pre_owned" value="1">
+                <label class="form-check-label" for="pre_owned">
+                Check if vehicle is Pre-Owned
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="electric" name="electric" value="1">
+                <label class="form-check-label" for="electric">
+                Check if vehicle is electric
+                </label>
+            </div>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Create Vehicle</button>
+        </div>
+    </form>
+</div>

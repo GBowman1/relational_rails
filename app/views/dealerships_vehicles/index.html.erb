@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-dark border-bottom border-body text-light mb-2" data-bs-theme="dark">
     <div class="container-fluid">
         <h3>VMDB</h3>
         <div class="collapse navbar-collapse" id="navbarText">
@@ -21,8 +21,19 @@
 </nav>
 <section class="container">
     <h1> <%= "All Vehicles from: #{@dealership.name}" %> </h1>
+    <hr>
+    <a href="/dealerships/<%=@dealership.id%>/vehicles/new" class="btn btn-primary">Add New Vehicle</a>
+
+    <%= link_to dealership_vehicles_path(@dealership, sort: 'make'), class: "btn btn-primary m-1" do %>
+        Make A-Z
+    <% end %>
+
+    <%= link_to dealership_vehicles_path(@dealership, sort: 'model'), class: "btn btn-primary m-1" do %>
+        Model A-Z
+    <% end %>
+
     <div class="row">
-        <% @dealership.vehicles.each do |vehicle| %>
+        <% @vehicles.each do |vehicle| %>
             <div class="col-4 mb-4">
                 <div class="card">
                     <img src="<%=vehicle.img_url%>" class="card-img-top mx-auto" alt="Coming Soon" style="width: 80%">
@@ -36,6 +47,10 @@
                         <li class="list-group-item"> <%="Horsepower: #{vehicle.horsepower}" %> </li>
                         <li class="list-group-item"> <%="Price: #{vehicle.price}$" %> </li>
                     </ul>
+                    <div class="btn-group">
+                        <a href="/vehicles/<%=vehicle.id%>" class="btn btn-primary m-1">View <%=vehicle.make%> <%=vehicle.model%></a>
+                        <a href="/vehicles/<%=vehicle.id%>/edit" class="btn btn-warning m-1">Edit <%=vehicle.make%> <%=vehicle.model%></a>
+                    </div>
                 </div>
             </div>
         <% end %>

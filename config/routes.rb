@@ -7,11 +7,24 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  # Parent Routes
   get '/dealerships', to: 'dealerships#index'
   get '/dealerships/new', to: 'dealerships#new'
   post "/dealerships", to: "dealerships#create"
   get '/dealerships/:id', to: 'dealerships#show'
+  get '/dealerships/:id/edit', to: 'dealerships#edit'
+  patch '/dealerships/:id', to: 'dealerships#update'
+  delete '/dealerships/:id', to: 'dealerships#destroy'
+
+  # Child Routes
   get '/vehicles', to: 'vehicles#index'
   get '/vehicles/:id', to: 'vehicles#show'
-  get '/dealerships/:dealership_id/vehicles', to: 'dealerships_vehicles#index'
+  get '/vehicles/:id/edit', to: 'vehicles#edit'
+  patch '/vehicles/:id', to: 'vehicles#update'
+  
+  # Nested Routes
+    get '/dealerships/:dealership_id/vehicles', to: 'dealerships_vehicles#index', as: 'dealership_vehicles'
+    get '/dealerships/:dealership_id/vehicles/new', to: 'dealerships_vehicles#new'
+    post '/dealerships/:dealership_id/vehicles', to: 'dealerships_vehicles#create'
 end
