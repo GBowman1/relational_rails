@@ -38,6 +38,10 @@
                         <li class="list-group-item"> <%="Horsepower: #{vehicle.horsepower}" %> </li>
                         <li class="list-group-item"> <%="Price: #{vehicle.price}$" %> </li>
                     </ul>
+                    <div class="btn-group">
+                        <a href="/vehicles/<%=vehicle.id%>" class="btn btn-primary m-1">View <%=vehicle.make%> <%=vehicle.model%></a>
+                        <a href="/vehicles/<%=vehicle.id%>/edit" class="btn btn-warning m-1">Edit <%=vehicle.make%> <%=vehicle.model%></a>
+                    </div>
                 </div>
             </div>
         <% end %>

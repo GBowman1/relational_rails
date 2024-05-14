@@ -15,6 +15,18 @@ class DealershipsVehiclesController < ApplicationController
         redirect_to dealership_vehicles_path(@dealership)
     end
 
+    # def edit
+    #     @dealership = Dealership.find(params[:dealership_id])
+    #     @vehicle = Vehicle.find(params[:id])
+    # end
+
+    # def update
+    #     @dealership = Dealership.find(params[:dealership_id])
+    #     @vehicle = Vehicle.find(params[:id])
+    #     @vehicle.update(vehicle_params)
+    #     redirect_to dealership_vehicles_path(@dealership)
+    # end
+
     private
     def vehicle_params
         params.require(:vehicle).permit(:pre_owned, :electric, :price, :year, :horsepower, :make, :model, :img_url)

@@ -28,10 +28,11 @@
         <p> <%="Electric: #{@vehicle.electric} "%> </p>
         <p> <%="Horsepower: #{@vehicle.horsepower} "%> </p>
         <p> <%="Price: #{@vehicle.price}$ "%> </p>
-        <p>
-            <a href="/dealerships/<%=@vehicle.dealership.id%>">
-                <%="Seller: #{ @vehicle.dealership.name}"%>
-            </a>
-        </p>
+        <div class="btn-group">
+                <a href="/dealerships/<%=@vehicle.dealership.id%>" class="btn btn-primary m-1">
+                    <%="Seller: #{ @vehicle.dealership.name}"%>
+                </a>
+                <a href="/vehicles/<%=@vehicle.id%>/edit" class="btn btn-warning m-1">Edit <%=@vehicle.make%> <%=@vehicle.model%></a>
+        </div>
     </div>
 </div>
